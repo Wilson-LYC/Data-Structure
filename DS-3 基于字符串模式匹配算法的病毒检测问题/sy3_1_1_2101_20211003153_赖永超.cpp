@@ -1,3 +1,10 @@
+/*
+学号：20211003153
+姓名：赖永超
+班级：计算机2101
+版本：V1.0 
+GitHub：https://github.com/Wilson-LYC/Data-Structure
+*/
 #include<iostream>
 #include<string.h>
 using namespace std;
