@@ -1,46 +1,60 @@
 /*
-Ñ§ºÅ£º20211003153
-ĞÕÃû£ºÀµÓÀ³¬
-°à¼¶£º¼ÆËã»ú2101
-°æ±¾£ºV1.0 
-GitHub£ºhttps://github.com/Wilson-LYC/Data-Structure
+å­¦å·ï¼š20211003153
+å§“åï¼šèµ–æ°¸è¶…
+ç­çº§ï¼šè®¡ç®—æœº2101
+ç‰ˆæœ¬ï¼šV1.0 
+GitHubï¼šhttps://github.com/Wilson-LYC/Data-Structure
 */
 #include<iostream>
 #include<string.h>
 using namespace std;
-int next[600];
+int nnext[600];
 
-void Next(string s)
+void nNext(string s)
 {
 	int i;
-	for (i=0;i<=500;i++) next[i]=0;
-    int j=0;i=1;
+	for (i=0;i<=s.length();i++) nnext[i]=0;
+	nnext[1]=0;
+    int j=0;
+	i=1;
     while (i<s.length())
     {
+		//cout<<s[i]<<" "<<s[j]<<endl;
     	if (j==0||s[i]==s[j])
     	{
     		++i;
     		++j;
-    		next[i]=j;
+    		if (s[i]!=s[j]) nnext[i]=j;
+    		else nnext[i]=nnext[j];
+    		//nnext[i]=j;
 		}
-		else j=next[j];
+		else j=nnext[j];
 	}
 }
 
 int KMP(string a,string b)
 {
-    int i=0,j=1;
-    while (i<=a.length()&&j<=b.length())
+    int i=0,j=0;
+    while (i<=a.length()-1&&j<=b.length()-1)
     {
-    	if (j==0||a[i]==b[j])
+    	//cout<<a[i]<<" "<<b[j]<<endl;
+    	if (j==0 || a[i]==b[j])
     	{
     		++i;
-    		j++;
+    		++j;
 		}
-		else j=next[j];
+		else j=nnext[j];
 	}
-	if (j>b.length()) return i-b.length();
-	else return 0;
+	if (j>b.length()-1)
+	{
+		//cout<<"åŒ¹é…æˆåŠŸ"; 
+		return i-b.length()-1;
+	 } 
+	else
+	{
+		//cout<<"åŒ¹é…å¤±è´¥"; 
+		return -1;
+	} 
 }
 
 int main()
@@ -58,13 +72,15 @@ int main()
         for (int j=0;j<=lx;j++)
         {
         	string a=x.substr(j,lx+1);
-        	Next(a);
-        	if (KMP(s,a)!=0)
+        	//cout<<a;
+        	nNext(a);
+        	if (KMP(s,a)!=-1)
 			{
 				bj=1;
 				cout<<"YES"<<endl;
 				break;
 			}
+			//else cout<<" NO"<<endl; 
 		}
 		if (bj==0) cout<<"NO"<<endl; 
 	}
