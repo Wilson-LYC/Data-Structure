@@ -1,0 +1,8 @@
+﻿  tools.cpp
+D:\wilson\Documents\校园导航\校园导航\tools.cpp(40,24): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  校园导航.cpp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 123 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  校园导航.vcxproj -> D:\wilson\Documents\校园导航\校园导航\x64\Release\校园导航.exe
